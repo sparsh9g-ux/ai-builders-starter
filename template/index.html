@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- To ship the dark preset instead of light: <html lang="en" data-theme="dark"> -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Marks that JS is running so .reveal elements are only hidden when the script can un-hide them. -->
+<script>document.documentElement.classList.add('js');</script>
+
+<title>{{CLUB_NAME}} — {{COLLEGE_NAME}}</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<meta name="theme-color" content="{{THEME_COLOR}}">
+<link rel="canonical" href="{{SITE_URL}}/">
+
+<!-- Open Graph / Twitter: what the link looks like when shared. OG image should be 1200x630. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{CLUB_NAME}}">
+<meta property="og:title" content="{{CLUB_NAME}} — {{COLLEGE_NAME}}">
+<meta property="og:description" content="{{META_DESCRIPTION}}">
+<meta property="og:url" content="{{SITE_URL}}/">
+<meta property="og:image" content="{{SITE_URL}}/{{OG_IMAGE_PATH}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{CLUB_NAME}} — {{COLLEGE_NAME}}">
+<meta name="twitter:description" content="{{META_DESCRIPTION}}">
+<meta name="twitter:image" content="{{SITE_URL}}/{{OG_IMAGE_PATH}}">
+
+<link rel="icon" href="{{FAVICON_PATH}}">
+<link rel="apple-touch-icon" href="{{FAVICON_PATH}}">
+
+<!-- Fonts: Geist 400 + 700 only. If the club has no internet-font requirement, delete these three lines and the system stack in styles.css takes over. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Preload the hero image so the first paint is not blocked. Delete this line if the hero has no image. -->
+<link rel="preload" href="{{HERO_IMAGE_PATH}}" as="image">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Structured data: lets search engines show the club as an organization. Keep in sync with the visible content. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{CLUB_NAME}}",
+  "description": "{{META_DESCRIPTION}}",
+  "url": "{{SITE_URL}}/",
+  "logo": "{{SITE_URL}}/{{LOGO_PATH}}",
+  "email": "{{CONTACT_EMAIL}}",
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "{{COLLEGE_NAME}}"
+  },
+  "sameAs": [
+    "{{INSTAGRAM_URL}}"
+  ]
+}
+</script>
+</head>
+<body id="top">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================================================
+     HEADER / NAV — sticky, collapses to a hamburger under 860px
+     ============================================================ -->
+<header class="site-header">
+  <nav class="nav wrap" aria-label="Primary">
+    <a class="brand" href="#top" aria-label="{{CLUB_NAME}} home">
+      <img class="brand-logo" src="{{LOGO_PATH}}" alt="{{LOGO_ALT}}" width="40" height="40">
+      <span class="brand-name">{{CLUB_NAME}}</span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#what-we-do">What We Do</a>
+      <a href="#events">Events</a>
+      <a href="#officers">Officers</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary btn-sm" href="#join">Join</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO — club name, one-line mission, two CTAs
+       ============================================================ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">{{HERO_EYEBROW}}</p>
+        <h1 id="hero-title">{{CLUB_NAME}}</h1>
+        <p class="lead">{{MISSION_LINE}}</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#join">Join</a>
+          <a class="btn btn-ghost" href="#events">Events</a>
+        </div>
+      </div>
+      <!-- Optional. Delete this <figure> (and the preload link in <head>) if the club has no real photo to use here. -->
+      <figure class="hero-media">
+        <img src="{{HERO_IMAGE_PATH}}" alt="{{HERO_IMAGE_ALT}}" width="1200" height="900" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section id="about" class="section" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">{{ABOUT_HEADING}}</h2>
+        <p class="body-copy">{{ABOUT_PARAGRAPH_1}}</p>
+        <p class="body-copy">{{ABOUT_PARAGRAPH_2}}</p>
+      </div>
+      <!-- Optional. Delete this <figure> if there is no real club photo. Do not substitute stock people. -->
+      <figure class="about-media reveal">
+        <img src="{{ABOUT_IMAGE_PATH}}" alt="{{ABOUT_IMAGE_ALT}}" width="800" height="600" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHAT WE DO — three cards
+       ============================================================ -->
+  <section id="what-we-do" class="section section-alt" aria-labelledby="what-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">What We Do</p>
+        <h2 id="what-title">{{WHAT_HEADING}}</h2>
+        <p class="section-sub">{{WHAT_SUBLINE}}</p>
+      </div>
+      <div class="card-grid cols-3">
+        <article class="card reveal">
+          <span class="card-num" aria-hidden="true">01</span>
+          <h3>{{DO_1_TITLE}}</h3>
+          <p>{{DO_1_TEXT}}</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-num" aria-hidden="true">02</span>
+          <h3>{{DO_2_TITLE}}</h3>
+          <p>{{DO_2_TEXT}}</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-num" aria-hidden="true">03</span>
+          <h3>{{DO_3_TITLE}}</h3>
+          <p>{{DO_3_TEXT}}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       UPCOMING EVENTS — list of three. Use only events the club confirmed.
+       If there are fewer than three, remove the extra <li>; never pad with invented ones.
+       ============================================================ -->
+  <section id="events" class="section" aria-labelledby="events-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Events</p>
+        <h2 id="events-title">{{EVENTS_HEADING}}</h2>
+        <p class="section-sub">{{EVENTS_SUBLINE}}</p>
+      </div>
+      <ol class="event-list">
+        <li class="event reveal">
+          <time class="event-date" datetime="{{EVENT_1_DATETIME}}">{{EVENT_1_DATE}}</time>
+          <div class="event-body">
+            <h3>{{EVENT_1_TITLE}}</h3>
+            <p class="event-meta">{{EVENT_1_LOCATION}}</p>
+          </div>
+        </li>
+        <li class="event reveal">
+          <time class="event-date" datetime="{{EVENT_2_DATETIME}}">{{EVENT_2_DATE}}</time>
+          <div class="event-body">
+            <h3>{{EVENT_2_TITLE}}</h3>
+            <p class="event-meta">{{EVENT_2_LOCATION}}</p>
+          </div>
+        </li>
+        <li class="event reveal">
+          <time class="event-date" datetime="{{EVENT_3_DATETIME}}">{{EVENT_3_DATE}}</time>
+          <div class="event-body">
+            <h3>{{EVENT_3_TITLE}}</h3>
+            <p class="event-meta">{{EVENT_3_LOCATION}}</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OFFICERS — four cards. Photos are optional and need the person's consent;
+       delete the <img> and the neutral avatar circle stays.
+       ============================================================ -->
+  <section id="officers" class="section section-alt" aria-labelledby="officers-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Officers</p>
+        <h2 id="officers-title">{{OFFICERS_HEADING}}</h2>
+        <p class="section-sub">{{OFFICERS_SUBLINE}}</p>
+      </div>
+      <ul class="card-grid cols-4 officer-grid">
+        <li class="officer reveal">
+          <div class="officer-photo"><img src="{{OFFICER_1_PHOTO_PATH}}" alt="{{OFFICER_1_PHOTO_ALT}}" width="160" height="160" loading="lazy"></div>
+          <h3>{{OFFICER_1_NAME}}</h3>
+          <p class="officer-role">{{OFFICER_1_ROLE}}</p>
+        </li>
+        <li class="officer reveal">
+          <div class="officer-photo"><img src="{{OFFICER_2_PHOTO_PATH}}" alt="{{OFFICER_2_PHOTO_ALT}}" width="160" height="160" loading="lazy"></div>
+          <h3>{{OFFICER_2_NAME}}</h3>
+          <p class="officer-role">{{OFFICER_2_ROLE}}</p>
+        </li>
+        <li class="officer reveal">
+          <div class="officer-photo"><img src="{{OFFICER_3_PHOTO_PATH}}" alt="{{OFFICER_3_PHOTO_ALT}}" width="160" height="160" loading="lazy"></div>
+          <h3>{{OFFICER_3_NAME}}</h3>
+          <p class="officer-role">{{OFFICER_3_ROLE}}</p>
+        </li>
+        <li class="officer reveal">
+          <div class="officer-photo"><img src="{{OFFICER_4_PHOTO_PATH}}" alt="{{OFFICER_4_PHOTO_ALT}}" width="160" height="160" loading="lazy"></div>
+          <h3>{{OFFICER_4_NAME}}</h3>
+          <p class="officer-role">{{OFFICER_4_ROLE}}</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW TO JOIN — steps + meeting time/location + external sign-up link
+       ============================================================ -->
+  <section id="join" class="section" aria-labelledby="join-title">
+    <div class="wrap join-grid">
+      <div class="reveal">
+        <p class="eyebrow">How to Join</p>
+        <h2 id="join-title">{{JOIN_HEADING}}</h2>
+        <p class="section-sub">{{JOIN_SUBLINE}}</p>
+        <ol class="steps">
+          <li><span class="step-num" aria-hidden="true">1</span><p>{{JOIN_STEP_1}}</p></li>
+          <li><span class="step-num" aria-hidden="true">2</span><p>{{JOIN_STEP_2}}</p></li>
+          <li><span class="step-num" aria-hidden="true">3</span><p>{{JOIN_STEP_3}}</p></li>
+        </ol>
+      </div>
+      <aside class="meeting-card reveal" aria-label="Meeting details">
+        <h3>Meetings</h3>
+        <dl class="meeting-facts">
+          <div><dt>When</dt><dd>{{MEETING_DAY_TIME}}</dd></div>
+          <div><dt>Where</dt><dd>{{MEETING_LOCATION}}</dd></div>
+        </dl>
+        <!-- JOIN_URL must be a real link (interest form, club portal, Instagram DM link). If there is none, link to #contact. -->
+        <a class="btn btn-primary" href="{{JOIN_URL}}">{{JOIN_BUTTON_LABEL}}</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT — email + Instagram. No form by default; add one only if it posts somewhere real.
+       ============================================================ -->
+  <section id="contact" class="section section-alt" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">{{CONTACT_HEADING}}</h2>
+        <p class="section-sub">{{CONTACT_SUBLINE}}</p>
+      </div>
+      <ul class="contact-list reveal">
+        <li>
+          <span class="contact-label">Email</span>
+          <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>
+        </li>
+        <li>
+          <span class="contact-label">Instagram</span>
+          <a href="{{INSTAGRAM_URL}}" rel="noopener" target="_blank">@{{INSTAGRAM_HANDLE}}</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER — the "Built by" credit is the price of the free site. Keep it.
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">{{CLUB_NAME}}</p>
+      <p class="footer-sub">{{COLLEGE_NAME}}</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#about">About</a>
+      <a href="#events">Events</a>
+      <a href="#join">Join</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; {{CURRENT_YEAR}} {{CLUB_NAME}}</p>
+    <p class="footer-credit">Built by <a href="{{BUILDER_URL}}" rel="noopener">AI Builders Club</a></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
